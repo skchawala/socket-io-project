@@ -1,0 +1,26 @@
+
+<html>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" integrity="sha512-7IDZ+mHVoc7nSziUi72L5rGojJDtveVWHOjb+Eu8QSnguy5FitNnFyEoLoL3v1u18DNm4E30elDfkhZvVADw6Q==" crossorigin="anonymous"></script>
+<h1>Native web socket</h1>
+<script>
+    let socket = io('http://localhost:8000')
+
+    socket.on('connect',(data)=>{
+        console.log("WebSocket is open now.");
+        console.log(data)
+        socket.on('welcome',(msg)=>{
+            console.log(msg)
+        })
+        socket.emit('message','I am exicedted to connect')
+    })
+    socket.onmessage = function(event){
+        console.log(event.data)
+    }
+    socket.onclose=function(event){
+        console.log('connection closed')
+    }
+    console.log(socket)
+</script>
+</body>
+</html>
