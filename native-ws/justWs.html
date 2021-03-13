@@ -1,0 +1,22 @@
+
+<html>
+<body>
+
+<h1>Native web socket</h1>
+<script>
+    let ws = new WebSocket('ws://localhost:8000/chat')
+    ws.onopen = function(event){
+        console.log("WebSocket is open now.");
+        console.log(event)
+        ws.send('I am exicedted to connect')
+    }
+    ws.onmessage = function(event){
+        console.log(event.data)
+    }
+    ws.onclose=function(event){
+        console.log('connection closed')
+    }
+    console.log(ws)
+</script>
+</body>
+</html>
