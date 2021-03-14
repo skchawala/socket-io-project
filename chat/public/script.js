@@ -12,6 +12,12 @@ socket2.on('connect',()=>{
 socket2.on('welcome',(data)=>{
     console.log(socket2.id,data)
 })
+socket2.on('joined',(data)=>{
+   console.log('new scoket joined',data)
+})
+socket.on('joined',(data)=>{
+    console.log('new scoket joined',data)
+})
 
 socket.on('messageFromServer',(data)=>{
     console.log(data)

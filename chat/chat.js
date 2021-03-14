@@ -24,6 +24,10 @@ io.on('connection',(socket,req)=>{
         io.emit('msgToClient',data)
     })
 
+    socket.join('level1')
+
+    socket.to('level1').emit('joined',`${socket.id}  have joined the level one`)
+
 
 })
 
