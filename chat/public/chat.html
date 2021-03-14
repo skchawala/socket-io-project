@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -28,37 +28,7 @@
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script>
-    const socket = io('http://localhost:8000')
-    socket.on('messageFromServer',(data)=>{
-        console.log(data)
-        socket.emit('messageToServer',{data:'this is from client'})
-
-    })
-
-    const listP = document.getElementById('messages')
-
-    function appendDataToList(data){
-        const li = document.createElement('li')
-        li.innerText = data.text||''
-        listP.appendChild(li)
-    }
-    //msgToClient
-    socket.on('msgToClient',(data)=>{
-        console.log(data)
-        appendDataToList(data)
-    })
-
-    document.getElementById('message-form').addEventListener('submit',(event)=>{
-        event.preventDefault()
-        const msg  = document.getElementById('user-msg').value
-        console.log("Form submiited",msg)
-        socket.emit('newMsgToServer',{text:msg})
-    })
-
-
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

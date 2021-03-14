@@ -26,3 +26,8 @@ io.on('connection',(socket,req)=>{
 
 
 })
+
+io.of('/admin').on('connection',(socket,req)=>{
+    console.log('hello')
+    io.of('/admin').emit('welcome','Welocme to Admin Panel')
+})
